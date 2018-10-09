@@ -23,7 +23,8 @@ extension UIImage {
     
     class func convertToImageWith(view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
-        // compare with next code, its less efficiency
+        // method "render(in ctx: CGContext)" is faster than method "drawHierarchy"
+        // UIGraphicsRenderer available(iOS 10.0, *)
         if #available(iOS 10.0, *) {
             view.layer.render(in: UIGraphicsGetCurrentContext() ?? UIGraphicsRendererContext().cgContext)
         } else {

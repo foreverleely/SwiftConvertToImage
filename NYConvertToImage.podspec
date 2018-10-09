@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "NYConvertToImage"
-  spec.version      = "1.0.3"
+  spec.version      = "1.0.4"
   spec.summary      = "Converting view to image for Swift"
 
   # This description is used to generate tags and improve search results.
