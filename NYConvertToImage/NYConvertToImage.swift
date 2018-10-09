@@ -13,8 +13,12 @@ extension UIImage {
     class func convertToImageWith(_ view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
         // compare with next code, its less efficiency
-//        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        view.layer.render(in: UIGraphicsGetCurrentContext() ?? UIGraphicsRendererContext().cgContext)
+        if #available(iOS 10.0, *) {
+            view.layer.render(in: UIGraphicsGetCurrentContext() ?? UIGraphicsRendererContext().cgContext)
+        } else {
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        }
+        
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         if let image = image {
@@ -36,8 +40,12 @@ extension UIImage {
         scrollView.contentOffset = CGPoint.zero;
         scrollView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
         
-//        scrollView.drawHierarchy(in: scrollView.frame, afterScreenUpdates: true)
-        scrollView.layer.render(in: UIGraphicsGetCurrentContext() ?? UIGraphicsRendererContext().cgContext)
+        if #available(iOS 10.0, *) {
+            scrollView.layer.render(in: UIGraphicsGetCurrentContext() ?? UIGraphicsRendererContext().cgContext)
+        } else {
+            scrollView.drawHierarchy(in: scrollView.frame, afterScreenUpdates: true)
+        }
+        
         let image = UIGraphicsGetImageFromCurrentImageContext()
         scrollView.contentOffset = savedContentOffset
         scrollView.frame = savedFrame

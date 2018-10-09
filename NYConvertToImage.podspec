@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "NYConvertToImage"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.summary      = "Converting view to image for Swift"
 
   # This description is used to generate tags and improve search results.
@@ -62,8 +62,8 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  spec.platform     = :ios
-  # spec.platform     = :ios, "5.0"
+  # spec.platform     = :ios
+  spec.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
