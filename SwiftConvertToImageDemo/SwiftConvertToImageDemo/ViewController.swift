@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         testView.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         view.addSubview(testView)
         getCurrentTimeIntervalStr()
-        let testImage = UIImage.convertToImageWith(view)
+        let testImage = UIImage(view)
         print(testImage)
         getCurrentTimeIntervalStr()
         
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         scrollView.addSubview(testView2)
         
         getCurrentTimeIntervalStr()
-        let testImage = UIImage.convertToImageWith(scrollView)
+        let testImage = UIImage(scrollView) //UIImage.convertToImageWith(scrollView)
         print(testImage)
         getCurrentTimeIntervalStr()
         

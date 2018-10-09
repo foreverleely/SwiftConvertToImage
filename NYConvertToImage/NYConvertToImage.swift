@@ -10,7 +10,18 @@ import UIKit
 
 extension UIImage {
     
-    class func convertToImageWith(_ view: UIView) -> UIImage {
+    convenience init(_ view: UIView) {
+        if view.isKind(of: UIScrollView.self) {
+            let scrollView = view as! UIScrollView
+            let image = UIImage.convertToImageWith(scrollView: scrollView)
+            self.init(cgImage: image.cgImage!)
+        } else {
+            let image = UIImage.convertToImageWith(view: view)
+            self.init(cgImage: image.cgImage!)
+        }
+    }
+    
+    class func convertToImageWith(view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0)
         // compare with next code, its less efficiency
         if #available(iOS 10.0, *) {
@@ -27,7 +38,7 @@ extension UIImage {
         return UIImage()
     }
     
-    class func convertToImageWith(_ scrollView: UIScrollView) -> UIImage {
+    class func convertToImageWith(scrollView: UIScrollView) -> UIImage {
         return UIImage.convertToImageWith(scrollView, 0.0)
     }
     
